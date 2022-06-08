@@ -35,7 +35,7 @@ before_action :correct_user, only: [:edit, :update]
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = "You have updated book successfuly."
+      flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@book.id)
     else
       render :edit
@@ -58,7 +58,7 @@ before_action :correct_user, only: [:edit, :update]
     @book = Book.find(params[:id])
     @user = @book.user
     unless @user == current_user
-      redirect_to book_path(current_user.id)
+      redirect_to books_path
     end
   end
 
