@@ -18,13 +18,14 @@ before_action :correct_user, only: [:edit, :update]
   end
 
   def index
-    @books = Book.all
     @book = Book.new
+    @books = Book.all
     @user = current_user
   end
 
   def show
     @book = Book.find(params[:id])
+    @book_comment = BookComment.new
     @user = @book.user
   end
 
