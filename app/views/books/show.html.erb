@@ -8,7 +8,7 @@
      <div class="col-md-8 offset-md-1">
        <h2>Book detail</h2>
        <table class="table">
-         <tr>
+         <tr id="book_<%= @book.id %>">
            <td>
             <%= link_to user_path(@book.user.id) do %>
               <%= image_tag @book.user.get_profile_image(100, 100) %><br>
@@ -21,8 +21,8 @@
            <td>
              <%= @book.body %>
            </td>
-           <td>コメント数: <%= @book.book_comments.count %></td>
-           <td id="favorite-btn">
+           <td class="comments-count">コメント数: <%= @book.book_comments.count %></td>
+           <td class="favorite-btn">
              <%= render "favorites/btn", book: @book %>
            </td>
            <td>
@@ -37,7 +37,7 @@
            </td>
          </tr>
        </table>
-       <div id="comments_index">
+       <div class="book_comments">
          <%= render "book_comments/index", book: @book %>
        </div>
        <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
