@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :correct_user, only: [:edit, :update]
-before_action :ensure_guest_user, only: [:edit]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :ensure_guest_user, only: [:edit]
   def new
     @user = User.new
   end
@@ -29,7 +29,6 @@ before_action :ensure_guest_user, only: [:edit]
       render :edit
     end
   end
-
 
   private
 
