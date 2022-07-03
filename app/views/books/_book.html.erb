@@ -27,11 +27,11 @@
       <% if user.name != "guestuser" %>
       <div class="row">
         <% if current_user != user %>
-          <td><%= render "relationships/btn", user: user %></td>
+          <span><%= render "relationships/btn", user: user %></span>
 
           <% if (user.following?(current_user)) && (current_user.following?(user)) %>
           <% if @isRoom == true %>
-            <%= link_to "チャットへ", room_path(user), class: "btn btn-primary" %>
+            <%= link_to "チャットへ", room_path(@roomId), class: "btn btn-primary" %>
           <% else %>
             <%= form_with model: @room do |f| %>
               <%= fields_for @entry do |e| %>
@@ -41,8 +41,8 @@
             <% end %>
           <% end %>
           <% end %>
-        <% else %>
 
+        <% else %>
           <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
             <i class="fas fa-user-cog"></i>
           <% end %>
