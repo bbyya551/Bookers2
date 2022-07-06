@@ -4,16 +4,15 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-// import Turbolinks from "turbolinks"
+import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
-import "chartkick"
-import "chart.js"
 
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import "chartkick";
+import Chart from 'chart.js/auto';
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
