@@ -8,7 +8,8 @@
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <%= render 'books/index', books: @books %>
-      <%= render 'post_count', books: @books, user: @user %>
+      <%= render 'daily_posts_form', user: @user %>
+      <%= render 'post_count', books: @books %>
     </div>
   </div>
 
