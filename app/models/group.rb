@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
   has_many :users, through: :group_users
 
   validates :name, presence: true
@@ -13,5 +13,5 @@ class Group < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width, height]).processed
-  end
+   end
 end
