@@ -15,6 +15,10 @@ class Book < ApplicationRecord
   scope :created_5days, -> { where(created_at: 5.day.ago.all_day) }
   scope :created_6days, -> { where(created_at: 6.day.ago.all_day) }
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :star_count, -> {order(star: :desc)}
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
