@@ -4,7 +4,7 @@
       <th></th>
       <th>Title</th>
       <th>Opinion</th>
-      <th colspan="6"></th>
+      <th colspan="8"></th>
     </tr>
   </thead>
 
@@ -40,6 +40,9 @@
       </td>
       <td class="view-count">
         閲覧数: <%= book.view_counts.count %>
+      </td>
+      <td>
+        <%= l book.created_at %>
       </td>
     </tr>
     <% end %>
