@@ -4,6 +4,9 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
   has_many :view_counts, dependent: :destroy
+
+  has_many :book_tags, dependent: :destroy
+  has_many :tags, through: :book_tags
   scope :created_this_week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
   scope :created_last_week, -> { where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day) }
 
@@ -25,4 +28,18 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
+
+  def save_tags(tag_list)
+    tag_list.each do |tag|
+      unless find_tag = Tag.find_by(name: tag.downcase)
+        begin
+          self.tags.create!(name: tag)
+        rescue
+          nil
+        end
+      else
+        BookTag.create!(book_id: self.id, tag_id: find_tag.id)
+      end
+    end
+  end
 end
